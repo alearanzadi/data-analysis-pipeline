@@ -46,5 +46,6 @@ def mailing():
     from_mail = gmail_user
     to = input("Who should receive the mail?")
     body = "Here is the complete DataFame. Regards"
+    subject = "Fertility vs GDP"
     server.sendmail(from_mail, to, body)
     server.close()
