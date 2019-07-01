@@ -1,4 +1,5 @@
 import pandas as pd
+from adquisition import *
 
 def drop_cols(data):
     data.drop(["Indicator Code", "Indicator Name", "Country Code"], axis=1, inplace=True)
@@ -11,6 +12,7 @@ def drop_null(data):
 def clean_data(data):
     data = drop_cols(data)
     data = drop_null(data)
+
     df = data.set_index ("Country Name")
     df_mean = df.transpose()
     mean = df_mean.mean()
@@ -22,5 +24,3 @@ def clean_data(data):
 if __name__ == '__main__': 
     data = pd.read_csv('./fertility_rate.csv')
     data = clean_data(data)
-
-    print(data)

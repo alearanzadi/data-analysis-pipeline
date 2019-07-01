@@ -1,14 +1,17 @@
 from adquisition import load_data
-from clean import clean_data
-
-
-
+from clean import *
+from scraping import *
+from analysis import *
+from outputs import *
 
 
 def main():
-    data = load_data('./fertility_rate.csv')
+    data = load_data()
     data = clean_data(data)
-    print(data)
+    scraping = scrap()
+    merging = merge(scraping, data)
+    creating = create()
+    mailing()
 
 if __name__ == '__main__': 
     main()
