@@ -24,7 +24,15 @@ def create():
     pdf.cell(120, 120, 'Fertility vs. GDP')
     pdf.image('GettyImages_748319837.0.jpg', x=40, y=100, w=130, h=90, type = '', link = '')
     pdf.add_page()
-    pdf.image('mytable.jpg', x=40, y=100, w=130, h=90, type = '', link = '')
+    pdf.cell(60)
+    pdf.set_font('Arial', 'I', 14)
+    pdf.cell(-35)
+    pdf.cell(100, 40, 'The data shows that ferlity has a reverse correlation with GDP.')
+    pdf.cell(60)
+    pdf.set_font('Arial', 'I', 14)
+    pdf.cell(-165)
+    pdf.cell(100, 70, 'The less GDP a country has, the more children per woman are born')
+    pdf.image('mytable.jpg', x=50, y=80, w=130, h=90, type = '', link = '')
     pdf.output('Fertility vs. GDP.pdf', 'F')
     return PDF
 
@@ -32,8 +40,8 @@ import smtplib
 import getpass
 
 def mailing(to):
-    gmail_user = input("Enter your gmail account: ")
-    gmail_password = getpass.getpass("Enter your password: ")
+    gmail_user = input("Sender's email adress: ")
+    gmail_password = getpass.getpass("Enter password: ")
 
     try:  
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
@@ -46,13 +54,12 @@ def mailing(to):
     from_mail = gmail_user
     #to = input("Who should receive the mail?")
     subject = "Fertiliity vs. GDP"
-    body = "Checkout my latest data analytics project about fertility related to GDP https://github.com/alearanzadi/data-analysis-pipeline.git. Regards"
+    body = "Checkout my latest data analytics project about fertility related to GDP: https://github.com/alearanzadi/data-analysis-pipeline.git. Regards"
 
     message = """From: %s\nTo: %s\nSubject: %s\n\n%s
         """ % (from_mail, ", ".join(to), subject, body)
 
     server.sendmail(from_mail, to, message)
     server.close()
-
 
     

@@ -17,7 +17,7 @@ def main(to):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Input an email and you will get the information')
-    parser.add_argument('--email', dest='email', default="alejandraironhack@gmail.com", type=str, help='Email to send')
+    parser.add_argument('--email', dest='email', default="alejandraironhack@gmail.com", type=str, help="Receiver's")
     args = parser.parse_args()
 
     if "@" in args.email:
