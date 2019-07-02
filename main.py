@@ -4,16 +4,26 @@ from scraping import *
 from analysis import *
 from outputs import *
 from testPDF import *
+import argparse
 
-
-def main():
+def main(to):
     data = load_data()
     data = clean_data(data)
     scraping = scrap()
     merging = merge(scraping, data)
     creating = create()
-    mailing()
+    mailing(to)
     convertHtmlToPdf(srchtml, outputFilename)
 
-if __name__ == '__main__': 
-    main()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Input an email and you will get the information')
+    parser.add_argument('--email', dest='email', default="alejandraironhack@gmail.com", type=str, help='Email to send')
+    args = parser.parse_args()
+
+    if "@" in args.email:
+        main(args.email)
+    else:
+        print("Invalid email, please type again")
+
+
+    

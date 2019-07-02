@@ -31,7 +31,7 @@ def create():
 import smtplib
 import getpass
 
-def mailing():
+def mailing(to):
     gmail_user = input("Enter your gmail account: ")
     gmail_password = getpass.getpass("Enter your password: ")
 
@@ -44,9 +44,9 @@ def mailing():
         print("Something went wrong...")
 
     from_mail = gmail_user
-    to = input("Who should receive the mail?")
+    #to = input("Who should receive the mail?")
     subject = "Fertiliity vs. GDP"
-    body = "Checkout my latest data analytics project about fertility related to GDP. Regards"
+    body = "Checkout my latest data analytics project about fertility related to GDP https://github.com/alearanzadi/data-analysis-pipeline.git. Regards"
 
     message = """From: %s\nTo: %s\nSubject: %s\n\n%s
         """ % (from_mail, ", ".join(to), subject, body)
