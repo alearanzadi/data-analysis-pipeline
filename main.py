@@ -3,6 +3,7 @@ from clean import *
 from scraping import *
 from analysis import *
 from outputs import *
+from testPDF import *
 
 
 def main():
@@ -12,6 +13,7 @@ def main():
     merging = merge(scraping, data)
     creating = create()
     mailing()
+    convertHtmlToPdf(srchtml, outputFilename)
 
 if __name__ == '__main__': 
     main()
